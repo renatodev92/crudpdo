@@ -2,8 +2,6 @@
 
 
 /* Criando a CLASSE 'Pessoa'*/
-
-
 class Pessoa{
     
     
@@ -67,7 +65,7 @@ class Pessoa{
     }
 
     //Médoto utilizado para excluir uma pessoa do BANCO DE DADOS.
-    public function deletarPessoa($id)
+    public function deletarUsuario($id)
     {
         $delete = $this->pdo->prepare("DELETE FROM pessoa WHERE id = :id");
         $delete->bindValue(":id", $id);
@@ -75,7 +73,7 @@ class Pessoa{
     }
 
     //Método utilizado para buscar os dados de uma pessoas especifíca no banco de dados.
-    public function buscarDadosPessoa($id)
+    public function buscarDadosUsuario($id)
     {
         $resultado = [];        
         $select = $this->pdo->prepare("SELECT * FROM pessoa WHERE id = :id");     

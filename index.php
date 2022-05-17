@@ -18,7 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>CrudPessoa</title>
+    <title>CRUDPDO</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
             //Chamando a função atualizarDados da classe 'Pessoa'
             $pessoa->atualizarDados($id_update, $nome, $telefone, $email);
             echo "<script>
-                    alert('Dados atualizados com sucesso');
+                    alert('Dados atualizados com sucesso!\\n NOME: $nome \\n TELEFONE: $telefone \\n TELEFONE: $email');
                     window.location.href='index.php';
                     </script>";
             
@@ -102,7 +102,7 @@
     if(isset($_GET['id_update']))
     {
         $id_update = addslashes(($_GET['id_update']));
-        $resultado = $pessoa->buscarDadosPessoa($id_update);
+        $resultado = $pessoa->buscarDadosUsuario($id_update);
     }
 ?>
 
@@ -180,7 +180,7 @@
 if(isset($_GET['id']))
     {
       $id_pessoa =  addslashes($_GET['id']);
-      $pessoa->deletarPessoa($id_pessoa);
+      $pessoa->deletarUsuario($id_pessoa);
       echo "<script>
                 alert('Dados deletados com sucesso!');
                 window.location.href='index.php';
