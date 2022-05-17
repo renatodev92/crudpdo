@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #24604f;
+    color: #ffff;
+
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.container>.first {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    width: 20vw;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.form>label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form>input {
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #ffff;
+    color: #444444;
+    font-size: 12pt;
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+
+.form>.btn-login {
+    margin: 10px 0;
+    padding: 15px 0;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    background-color: #0faa75;
+    color: #ffff;
+}
+
+.form>.btn-login:hover {
+    background-color: #0def7d;
+    color: #444444;
+}
+
+
+.container>.second {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ffff;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #0faa75;
+    padding: 5px;
+    border-radius: 2px;
+    color: #ffff;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #0faa75;
+    padding: 5px;
+    border-radius: 2px;
+    color: #ffff;
+}
+
+.button:hover {
+    background-color: #080808cc;
+    color: #0def7d;
+}
