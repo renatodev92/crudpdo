@@ -48,7 +48,7 @@
             else
             {
                 echo "<script>
-                    alert('Preencha todos os campos para atualizar!');
+                    alert('MENSAGEM: Para cadastrar um novo usuário é necessário preen');
                     window.location.href='index.php';
                     </script>";
                 
