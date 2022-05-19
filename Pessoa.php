@@ -4,7 +4,8 @@
 /* Criando a CLASSE 'Pessoa'*/
 class Pessoa{
     
-    
+    //A propiedade 'pdo' onde será insanciando a classe PDO, que fará a conexão com o banco de dados.
+    //PRIVATE:: Este modificador é o mais restrito. Com ele definimos que somente a própria classe em que um atributo ou método foi declarado pode acessá-lo. Ou seja, nenhuma outra parte do código, nem mesmo as classes filhas, pode acessar esse atributo ou método.
     private $pdo;
 
 
