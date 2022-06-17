@@ -1,14 +1,13 @@
 <?php 
 
-    //Chamando a CLASSE 'Pessoa.php'
+    //Fazendo a chamada da classe 'Pessoa.php' através do require_once.
     require_once 'Pessoa.php';
 
     //Instanciando a CLASSE 'Pessoa.php' e passando os parametros da conexão através do __construct.
-    //Parametros: dbname, host, usuário e senha.
+    //Parametros: dbname, host(host de conexão), usuário e senha.
     $pessoa = new Pessoa("crudpdo","localhost","root","");
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -24,11 +23,14 @@
 
 <?php 
 
-    if(isset($_POST['btn-login']))//Quando a pessoa clicou no botão cadastrar ou editar
+    //Se existe dentro do formulário $_POST o botão btn-login.
+    if(isset($_POST['btn-login']))
     {   
         //--------------------ATUALIZAR-----------------------------
+        //Se existe a variavel GET o id_update e ela não estiver vazia. Se for verdade...
         if(isset($_GET['id_update']) && !empty($_GET['id_update']))
         {   
+            //As variaveis abaixo receberão os dados preenchidos no formulário via $_GET e $_POST.
             $id_update = addslashes($_GET['id_update']);
             $nome      = addslashes(strtoupper($_POST['nome']));
             $telefone  = addslashes(strtoupper($_POST['telefone']));
@@ -37,10 +39,10 @@
             //Se os campos: $nome, $telefone e $email não estiverem vazios.
             if(!empty($nome) && !empty($telefone) && !empty($email))
             {
-            //Chamando a função atualizarDados da classe 'Pessoa'
+            //Chamaremos a função atualizarDados da classe 'Pessoa'. Para que os dados sejam atualizados.
             $pessoa->atualizarDados($id_update, $nome, $telefone, $email);
             echo "<script>
-                    alert('Dados atualizados com sucesso!\\n NOME: $nome \\n TELEFONE: $telefone \\n TELEFONE: $email');
+                    alert('\\nDados atualizados com sucesso!\\n\\nNOME: $nome \\nTELEFONE: $telefone \\nEMAIL: $email');
                     window.location.href='index.php';
                     </script>";
             
@@ -48,7 +50,7 @@
             else
             {
                 echo "<script>
-                    alert('MENSAGEM: Para cadastrar um novo usuário é necessário preen');
+                    alert('MENSAGEM: Para cadastrar um novo usuário é necessário preencher todos os dados!');
                     window.location.href='index.php';
                     </script>";
                 
@@ -69,7 +71,7 @@
                 if($pessoa->cadastrarUsuario($nome, $telefone,$email))
                 {
                     echo "<script>
-                            alert('Usuário cadastrado com sucesso!');
+                            alert('\\nUsuário cadastrado com sucesso!\\n\\nNOME: $nome \\nTELEFONE: $telefone \\nEMAIL: $email');
                             window.location.href='index.php';
                         </script>";
                     
@@ -77,7 +79,7 @@
                 else
                 {
                     echo "<script>
-                            alert('ERRO: O email infomado já foi cadasatrado em outro usuário.');
+                            alert('ERRO: O email infomado ( $email ) já foi cadasatrado em outro usuário.\\n');
                             window.location.href='index.php';
                         </script>";
                     
@@ -87,7 +89,7 @@
             else 
             {
                 echo "<script>
-                    alert('Por favor, preencha todos os campos!');
+                    alert('\\nALERTA: Para cadastrar um novo usuário é necessário o preenchimento de todos os campos!');
                     window.location.href='index.php';
                 </script>";
                 
@@ -182,7 +184,7 @@ if(isset($_GET['id']))
       $id_pessoa =  addslashes($_GET['id']);
       $pessoa->deletarUsuario($id_pessoa);
       echo "<script>
-                alert('Dados deletados com sucesso!');
+                alert('\\nDados deletados com sucesso!');
                 window.location.href='index.php';
             </script>";
     }

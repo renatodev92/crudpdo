@@ -36,7 +36,7 @@ class Pessoa{
     //Método utilizado para buscar os dados 'SELECT'.
     public function buscarDados()
     {
-        $resultado = array ();
+        $resultado = [];
         $select = $this->pdo->query("SELECT * FROM pessoa ORDER BY nome");
         $resultado = $select->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
