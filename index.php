@@ -143,7 +143,7 @@
                     </tr>
             <?php 
              $dados = $pessoa->buscarDados();
-             if(count($dados) > 0) //Se tem pessoas cadastradas no banco.
+             if(count($dados) > 0) //Se o número de usuários no banco for maior que 'Zero'
              {
                 for($i = 0; $i < count($dados); $i++)
                 {

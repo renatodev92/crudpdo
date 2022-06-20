@@ -11,29 +11,28 @@ class Pessoa{
 
     //A partir do momento que for executado a classe o primeiro código que será instanciado será o construtor.
     //Conexão com o Banco de Dados
-    public function __construct($dbname,$host, $user,$pass)
-    {
-        try
-        {
-            $this->pdo = new PDO("mysql:dbname=".$dbname.";host=".$host, $user,$pass);
-            //echo "Conexão realizada com sucesso!";
-        }
+    public function __construct($dbname, $host, $user, $senha){
 
+        try{
+            $this->pdo = new PDO("mysql:dbname=".$dbname.";host=".$host, $user, $senha);
+            //echo "A conexão com o banco de dados foi realizada com sucesso!";
+        }
         catch (PDOException $errosdb) 
         {
-            echo "Erro no banco de dados!<br>".$errosdb;  
+            echo "Erro no banco de dados: <br>".$errosdb;  
             exit();
         }
 
         catch(PDOException $errosgr)
         {
-            echo "Erro geral!<br> " .$errosgr;
+            echo "Erro geral: <br> " .$errosgr;
             exit();
         }
-    }
+
+}
 
 
-    //Método utilizado para buscar os dados 'SELECT'.
+    //Método utilizado para buscar os dados e EXIBIR OS RESULTADOS NA TELA
     public function buscarDados()
     {
         $resultado = [];

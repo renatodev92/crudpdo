@@ -8,50 +8,51 @@
 
 //Criando a variavel 'pdo' e instanciando a classe 'PDO'.
 //Passando os parametros no construtor. (dbname, hostname,usuario e senha)
-//Utilizaremos o try cath para retornar as exceções/erros, caso a conexão com o banco de dados não de certo.
+//Podemos ter vários erros com a conexão com o banco de dados, para que possamos visualizar os erros podemos usar o 'try cath' para retornar as exceções/erros, caso a conexão com o banco de dados não de certo.
 
 
-/* try{
+/* try{ 
     $pdo = new PDO("mysql:dbname=CRUDPDO;host=localhost","root","");
     //echo "Conexão realizada com Sucesso!";
 }catch(PDOException $errosdb){
-       echo "Erro no banco de dados!<br>".$errosdb; 
+       echo "Erro com o banco de dados: <br>".$errosdb->getMessage(); 
 }catch(PDOException $errosgr){
-       echo "Erro geral!<br> " .$errosgr;
-}; */
-
+       echo "Erro geral!<br> " .$errosgr->getMessage();
+};
+ */
 //-----------------------INSERT-----------------------------
 //Temos os dois métodos para utilizar o insert.
 
-/* //1° Forma
+/* //1° Forma através do método prepare da classe 'PDO'.
+
 $resultado = $pdo->prepare("INSERT INTO pessoa(nome, telefone, email) VALUES(:nome, :telefone, :email)");
 
 
-//Aceita valores passados diretamente e também funcções.
-//Aceita valores passados diretamente.
-$resultado->bindValue(":nome","Renato de Oliveira");
-$resultado->bindValue(":telefone", "11959596707");
-$resultado->bindValue(":email", "renato.roliveira92@gmail.com");
-$resultado->execute(); */
+//bindValue - Aceita valores passados diretamente e também funções.
+
+$resultado->bindValue(":n", "Renato de Oliveira");
+$resultado->bindValue(":t", "1190000-0000");
+$resultado->bindValeu(":email", "renato.oliveira@fecap.br");
+$resultado->execute();
 
 /* //Bindparam -- Só aceita váriaveis, não aceita nomes diretamente.
 $resultado->bindparam(":nome", $nome);//Só aceita váriaveis.
 $nome = "Renato de Oliveira"; */
 
-
-
-/* //2° Forma
+/* //2° Forma: Podemos inserir os dados diretamente através da query.
 $resultado = $pdo->query("INSERT INTO pessoa(nome, telefone, email) VALUES('Renan Maia de Carvalho', '954816957', 'renan-contato@hotmail.com')"); */
 
 
 //----------------------- DELETE -----------------------------
 
-/* //1° Forma
+//1° Forma
+
+/* 
 $delete = $pdo->prepare("DELETE FROM pessoa WHERE id = :id");
-$id = 4;
-$delete->bindValue(":id",$id);
+$id = 123;
+$delete->bindValue(":id", $id);
 $delete->execute();
-echo "ID deletado com sucesso." */
+echo "Os dados foram deletados com sucesso! ".$id; */
 
 
 /* //2° Forma
@@ -62,41 +63,68 @@ echo "Informações deletadas com sucesso!" */
 //----------------------- UPDATE -----------------------------
 
 
-/* $update = $pdo->prepare("UPDATE pessoa SET nome = :nome WHERE id = :id");
-$update->bindValue(":nome", "Diego Marques");
-$update->bindVALUE(":id",1);
+// 1° Forma através do método 'prepare';
+/* $update = $pdo->prepare("UPDATE pessoa SET email = :email WHERE id = :id");
+$id = 11;Butantã, São Paulo - SP
+$email = "miriam@gmail.com";
+$update->bindValue(":id", $id);
+$update->bindValue(":email", $email);
 $update->execute();
 echo "Os dados foram atualizados com Sucesso!"; */
 
 
 
-/* //2° Forma
-$update = $pdo->query("UPDATE pessoa SET nome = 'Maria de Lourdes' WHERE id = '1'"); */
+ //2° Forma atarvés do método 'query'
+/* $update = $pdo->query("UPDATE pessoa SET nome = 'Maria de Lourdes' WHERE id = '1'"); 
+echo "Os dados foram atualizados com Sucesso!";  */
 
 
 //----------------------- SELECT -----------------------------
 
-//1° Forma
-/* $select = $pdo->prepare("SELECT * FROM pessoa WHERE id = :id");
-$select->bindValue(":id",1);
-$select->execute();
-$result = $select->fetch(PDO::FETCH_ASSOC);
+//1° Forma através do método 'prepare';
+/* $select = $pdo->prepare("SELECT nome, telefone, email FROM pessoa WHERE id = :id");
+$id = 124;
+$select->bindValue(":id", $id);
+$select->execute(); */
 
-echo "----------RESULTADO----------<br>";
-foreach($result as $key => $value){
-       echo strtoupper($key). ": ".strtoupper($value). "<br>";
+//Tranformando os dados retornados do banco de dados em um array.
+//Você pode utilizar 2 funcões.
+// fetch() retorna apenas 1 registro do banco de dados.
+// fetchAll() retorna mais que 1 resgistro no banco de dados.
+
+
+//Criando uma variavel para receber a informação do banco de dados e tranformala em um array.
+// A função fecth nos da 2 opções para se trabalhar. o nome da coluna do banco de dados e a posição do indíce.
+//Execute o comando abaixo para visualizar.
+
+/* echo "<pre>";
+$resultado = $select->fetch();
+echo "<pre>";
+
+print_r($resultado); */
+
+/* //Iremos trabalhar com o PDO::FETCH_ASSOC que retornará o nome dos campos ao invés do número de índice. 
+
+echo "<pre>";
+$resultado = $select->fetch(PDO::FETCH_ASSOC);
+echo "<pre>";
+
+//Agora usaremos o foreach para percorrer os dados que iremos receber do banco.
+
+foreach ($resultado as $key => $value){
+       echo $key.":".$value."<br>";
 }
-//fetch();//Transformando os dados em um array. fetch() usado quando queremos retornar apenas 1 linha de código.
-//fetchAll();//Para trazer mais de um registro no banco de dados. */
-/* 
-//2° Forma
-$select = $pdo->query("SELECT * FROM pessoa WHERE id = '1'");
-$result = $select->fetch(PDO::FETCH_ASSOC);
 
-echo "----------RESULTADO----------<br>";
-foreach($result as $key => $value){
-       echo strtoupper($key). ": ".strtoupper($value). "<br>";
-} */
+/* print_r($resultado); */
+
+
+
+
+
+
+
+
+
 
 
 
