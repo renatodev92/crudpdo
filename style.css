@@ -54,7 +54,7 @@ body {
     margin: 10px 0;
 }
 
-.form>.btn-login {
+.form>.btn {
     margin: 10px;
     padding: 15px 0;
     border: none;
@@ -68,7 +68,7 @@ body {
     color: #ffff;
 }
 
-.form>.btn-login:hover {
+.form>.btn:hover {
     background-color: #0def7d;
     color: #444444;
 }

@@ -18,17 +18,16 @@ class Pessoa{
             //echo "A conexão com o banco de dados foi realizada com sucesso!";
         }
         catch (PDOException $errosdb) 
-        {
+        {   
             echo "Erro no banco de dados: <br>".$errosdb;  
             exit();
         }
 
         catch(PDOException $errosgr)
-        {
+        {   
             echo "Erro geral: <br> " .$errosgr;
             exit();
         }
-
 }
 
 

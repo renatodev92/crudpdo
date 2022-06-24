@@ -23,8 +23,8 @@
 
 <?php 
 
-    //Se existe dentro do formulário $_POST o botão btn-login.
-    if(isset($_POST['btn-login']))
+    //Se existe dentro do formulário $_POST o botão btn.
+    if(isset($_POST['btn']))
     {   
         //--------------------ATUALIZAR-----------------------------
         //Se existe a variavel GET o id_update e ela não estiver vazia. Se for verdade...
@@ -41,11 +41,10 @@
             {
             //Chamaremos a função atualizarDados da classe 'Pessoa'. Para que os dados sejam atualizados.
             $pessoa->atualizarDados($id_update, $nome, $telefone, $email);
-            echo "<script>
+            echo    "<script>
                     alert('\\nDados atualizados com sucesso!\\n\\nNOME: $nome \\nTELEFONE: $telefone \\nEMAIL: $email');
                     window.location.href='index.php';
                     </script>";
-            
             }
             else
             {
@@ -53,7 +52,6 @@
                     alert('MENSAGEM: Para cadastrar um novo usuário é necessário preencher todos os dados!');
                     window.location.href='index.php';
                     </script>";
-                
             }
         }
     
@@ -129,7 +127,7 @@
                 <input type="email" name="email" id="email" required
                 value="<?php if(isset($resultado)){echo $resultado['email'];} ?>"><br>
 
-                <input class="btn-login" name="btn-login" type="submit" value="<?php if(isset($resultado)){echo "Atualizar";}else{echo "Cadastrar";} ?>"><br>
+                <input class="btn" name="btn" type="submit" value="<?php if(isset($resultado)){echo "Atualizar";}else{echo "Cadastrar";} ?>"><br>
             </form>
         </section>
         
